@@ -1,9 +1,13 @@
 import Anthropic from "@anthropic-ai/sdk";
 import { NextRequest, NextResponse } from "next/server";
+import { rateLimit } from "../rate-limit";
 
 const client = new Anthropic();
 
 export async function POST(req: NextRequest) {
+  const limited = rateLimit(req, { maxRequests: 5, windowMs: 60 * 60 * 1000 });
+  if (limited) return limited;
+
   try {
     const { tweet } = await req.json();
 
