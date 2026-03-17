@@ -1,5 +1,4 @@
 import { Metadata } from "next";
-import { redirect } from "next/navigation";
 
 export async function generateMetadata({
   params,
@@ -32,7 +31,17 @@ export default async function SharePage({
 }: {
   params: Promise<{ score: string }>;
 }) {
-  // When someone clicks the shared link, redirect them to the main app
-  await params;
-  redirect("/");
+  const { score: scoreParam } = await params;
+  const score = Math.min(100, Math.max(0, parseInt(scoreParam) || 0));
+
+  // Client-side redirect after page loads (so crawlers see the meta tags first)
+  return (
+    <div className="min-h-screen bg-[#0a0a0f] flex items-center justify-center">
+      <meta httpEquiv="refresh" content="0;url=/" />
+      <div className="text-center">
+        <div className="text-6xl font-bold text-blue-500 mb-4">{score}/100</div>
+        <p className="text-slate-400 text-lg">Redirecting to BeforeYouTweet...</p>
+      </div>
+    </div>
+  );
 }
