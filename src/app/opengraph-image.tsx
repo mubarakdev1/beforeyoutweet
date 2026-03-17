@@ -16,67 +16,47 @@ export default function Image() {
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
-          background: "linear-gradient(135deg, #0a0a1a 0%, #0f172a 50%, #0a0a1a 100%)",
-          fontFamily: "Inter, sans-serif",
+          background: "#0a0a1a",
+          fontFamily: "sans-serif",
         }}
       >
-        {/* Score ring decoration */}
+        {/* Score circle */}
         <div
           style={{
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
+            width: 120,
+            height: 120,
+            borderRadius: 60,
+            border: "8px solid #3b82f6",
             marginBottom: 32,
           }}
         >
-          <svg width="120" height="120" viewBox="0 0 140 140">
-            <circle
-              cx="70"
-              cy="70"
-              r="54"
-              fill="none"
-              stroke="#1e293b"
-              strokeWidth="10"
-            />
-            <circle
-              cx="70"
-              cy="70"
-              r="54"
-              fill="none"
-              stroke="#3b82f6"
-              strokeWidth="10"
-              strokeDasharray="339.29"
-              strokeDashoffset="67.86"
-              strokeLinecap="round"
-              transform="rotate(-90 70 70)"
-            />
-            <text
-              x="70"
-              y="65"
-              textAnchor="middle"
-              fill="#3b82f6"
-              fontSize="36"
-              fontWeight="bold"
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+            }}
+          >
+            <span
+              style={{
+                fontSize: 42,
+                fontWeight: 800,
+                color: "#3b82f6",
+              }}
             >
               80
-            </text>
-            <text
-              x="70"
-              y="88"
-              textAnchor="middle"
-              fill="#64748b"
-              fontSize="14"
-            >
-              / 100
-            </text>
-          </svg>
+            </span>
+          </div>
         </div>
 
         {/* Title */}
         <div
           style={{
             display: "flex",
-            fontSize: 56,
+            fontSize: 64,
             fontWeight: 800,
             letterSpacing: "-0.02em",
           }}
@@ -89,9 +69,9 @@ export default function Image() {
         {/* Subtitle */}
         <div
           style={{
-            fontSize: 24,
+            fontSize: 28,
             color: "#94a3b8",
-            marginTop: 16,
+            marginTop: 20,
             display: "flex",
           }}
         >
@@ -102,36 +82,57 @@ export default function Image() {
         <div
           style={{
             display: "flex",
-            gap: 32,
-            marginTop: 40,
+            gap: 24,
+            marginTop: 48,
           }}
         >
-          {["Viral Score", "AI Analysis", "Smart Rewrite"].map((text) => (
-            <div
-              key={text}
-              style={{
-                display: "flex",
-                alignItems: "center",
-                gap: 8,
-                background: "rgba(59, 130, 246, 0.1)",
-                border: "1px solid rgba(59, 130, 246, 0.3)",
-                borderRadius: 999,
-                padding: "8px 20px",
-                fontSize: 18,
-                color: "#93c5fd",
-              }}
-            >
-              {text}
-            </div>
-          ))}
+          <div
+            style={{
+              display: "flex",
+              background: "rgba(59, 130, 246, 0.15)",
+              border: "2px solid rgba(59, 130, 246, 0.4)",
+              borderRadius: 999,
+              padding: "12px 28px",
+              fontSize: 20,
+              color: "#93c5fd",
+            }}
+          >
+            Viral Score
+          </div>
+          <div
+            style={{
+              display: "flex",
+              background: "rgba(59, 130, 246, 0.15)",
+              border: "2px solid rgba(59, 130, 246, 0.4)",
+              borderRadius: 999,
+              padding: "12px 28px",
+              fontSize: 20,
+              color: "#93c5fd",
+            }}
+          >
+            AI Analysis
+          </div>
+          <div
+            style={{
+              display: "flex",
+              background: "rgba(59, 130, 246, 0.15)",
+              border: "2px solid rgba(59, 130, 246, 0.4)",
+              borderRadius: 999,
+              padding: "12px 28px",
+              fontSize: 20,
+              color: "#93c5fd",
+            }}
+          >
+            Smart Rewrite
+          </div>
         </div>
 
         {/* URL */}
         <div
           style={{
             position: "absolute",
-            bottom: 32,
-            fontSize: 18,
+            bottom: 36,
+            fontSize: 20,
             color: "#475569",
             display: "flex",
           }}
