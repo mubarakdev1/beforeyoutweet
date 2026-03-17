@@ -105,9 +105,9 @@ export default function Home() {
 
   const charCount = tweet.length;
   const charColor =
-    charCount > 280
+    charCount > 500
       ? "text-red-500"
-      : charCount > 250
+      : charCount > 450
         ? "text-yellow-500"
         : "text-slate-500";
 
@@ -165,7 +165,7 @@ export default function Home() {
 
   function handleShareOnX() {
     if (!analysis) return;
-    const text = `I tested my tweet on BeforeYouTweet.\n\nScore: ${analysis.score}/100\n\nCan you beat it?\n\nTry it → beforeyoutweet.com`;
+    const text = `I tested my tweet on BeforeYouTweet.\n\nScore: ${analysis.score}/100\n\nCan you beat it?\n\nTry it → beforeyoutweet.app`;
     const url = `https://x.com/intent/tweet?text=${encodeURIComponent(text)}`;
     window.open(url, "_blank");
   }
@@ -203,7 +203,7 @@ export default function Home() {
           />
           <div className="flex items-center justify-between mt-3">
             <span className={`text-sm font-medium ${charColor}`}>
-              {charCount} / 280
+              {charCount} / 500
             </span>
             <button
               onClick={handleAnalyze}
