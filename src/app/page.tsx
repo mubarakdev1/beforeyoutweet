@@ -165,7 +165,8 @@ export default function Home() {
 
   function handleShareOnX() {
     if (!analysis) return;
-    const text = `I tested my tweet on BeforeYouTweet.\n\nScore: ${analysis.score}/100\n\nCan you beat it?\n\nTry it → beforeyoutweet.app`;
+    const shareUrl = `https://beforeyoutweet.app/share/${analysis.score}`;
+    const text = `I scored ${analysis.score}/100 on BeforeYouTweet.\n\nCan you beat it? 👇\n\n${shareUrl}`;
     const url = `https://x.com/intent/tweet?text=${encodeURIComponent(text)}`;
     window.open(url, "_blank");
   }
