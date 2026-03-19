@@ -335,6 +335,21 @@ export default function Home() {
           </div>
         )}
 
+        {/* Feedback Banner */}
+        <div className="bg-slate-900/50 rounded-2xl border border-slate-800 p-5 mb-6 text-center">
+          <p className="text-slate-300 text-sm mb-3">
+            Help me make this better — takes 30 seconds
+          </p>
+          <a
+            href="https://docs.google.com/forms/d/e/1FAIpQLSeppXqTUiaymECwcm66vQzhX5K64Ajj024RMA-ENIzWwuBktw/viewform"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block px-6 py-2.5 bg-slate-800 text-white border border-slate-700 rounded-full font-semibold text-sm hover:bg-slate-700 transition-colors"
+          >
+            Share Your Feedback
+          </a>
+        </div>
+
         {/* Footer */}
         <footer className="text-center py-8 text-sm text-slate-600">
           Built by Mubarak &middot; BeforeYouTweet
