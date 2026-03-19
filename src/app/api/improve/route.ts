@@ -5,7 +5,7 @@ import { rateLimit } from "../rate-limit";
 const client = new Anthropic();
 
 export async function POST(req: NextRequest) {
-  const limited = rateLimit(req, { maxRequests: 5, windowMs: 60 * 60 * 1000 });
+  const limited = rateLimit(req, { maxRequests: 10, windowMs: 60 * 60 * 1000 });
   if (limited) return limited;
 
   try {

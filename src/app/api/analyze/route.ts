@@ -19,7 +19,7 @@ Return a JSON response. No markdown, no code blocks, just raw JSON:
     "length": <number 0-10>
   },
   "explanation": "<2-3 sentences explaining the score>",
-  "suggestions": ["<suggestion 1>", "<suggestion 2>", "<suggestion 3>"]
+  "suggestions": ["<short punchy fix, max 10 words>", "<fix 2>", "<fix 3>"]
 }
 
 SCORING RULES — BE STRICT BUT FAIR:
@@ -45,6 +45,8 @@ A score of 10 means PERFECT in that dimension. It is rare but you MUST give it w
 
 NOTE: The overall score will be calculated automatically from the metrics. Focus on scoring each metric accurately — the overall score field will be overridden.
 
+SUGGESTIONS: Each suggestion must be SHORT — max 10 words, no fluff. Say what's wrong and what to do. Like "Open with a question — hooks are weak" not "Consider starting your tweet with a question to increase engagement."
+
 IMPORTANT: Detect the language of the tweet. If the tweet is in Arabic, return the explanation and suggestions in Arabic. If English, return in English. Always match the tweet's language.
 
 Tweet to analyze:
@@ -64,7 +66,7 @@ function parseAnalysis(raw: string) {
 }
 
 export async function POST(req: NextRequest) {
-  const limited = rateLimit(req, { maxRequests: 10, windowMs: 60 * 60 * 1000 });
+  const limited = rateLimit(req, { maxRequests: 20, windowMs: 60 * 60 * 1000 });
   if (limited) return limited;
 
   try {
@@ -92,6 +94,7 @@ export async function POST(req: NextRequest) {
       const message = await client.messages.create({
         model: "claude-haiku-4-5-20251001",
         max_tokens: 1024,
+        temperature: 0,
         messages: [{ role: "user", content: promptContent }],
       });
 
